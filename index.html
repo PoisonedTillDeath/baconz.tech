@@ -1,18 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baconz.tech</title>
-  <meta name="description" content="Baconz.tech – a tech playground for experimenting with web projects and redesigns.">
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f9f9f9; color: #1E1E1E; }
-    h1 { color: #FF6B35; }
-    p { max-width: 600px; margin: 20px auto; font-size: 18px; }
-  </style>
-</head>
-<body>
-  <h1>Welcome to Baconz.tech</h1>
-  <p>This domain is a personal tech playground where web projects and creative redesigns come to life. Stay tuned for future updates, experiments, and portfolio showcases.</p>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baconz.tech — Provisional Business Landing</title>
+    <style>
+      body {
+        font-family: 'Georgia', serif;
+        background-color: #f4f6fb;
+        color: #2d334a;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        transition: background-color 0.5s ease;
+      }
+
+      h1 {
+        color: #1e88e5;
+        font-size: 3em;
+        margin-bottom: 0.5em;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      h2 {
+        color: #43a047;
+        margin-top: 1.5em;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      p {
+        font-size: 1.2em;
+        line-height: 1.6em;
+        margin: 0 0 20px;
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(34, 51, 68, 0.1);
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+      }
+
+      .container:hover {
+        box-shadow: 0 8px 24px rgba(34, 51, 68, 0.15);
+      }
+
+      .message {
+        background-color: #e3f2fd;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      .message p {
+        font-style: italic;
+        color: #1e88e5;
+      }
+
+      .update {
+        background-color: #fff8e1;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        animation: fadeIn 2s ease-in-out;
+        border-left: 4px solid #43a047;
+      }
+
+      .icon {
+        font-size: 5em;
+        color: #1e88e5;
+        animation: pulse 1.5s infinite;
+        margin-bottom: 0.5em;
+      }
+
+      .banner {
+        background-color: #ffe082;
+        color: #2d334a;
+        font-weight: bold;
+        padding: 10px 0;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 1.1em;
+        box-shadow: 0 2px 8px rgba(34, 51, 68, 0.07);
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner">
+        This is a provisional landing page.<br>
+        Baconz.tech is preparing something new and exciting for you!
+      </div>
+      <h1>Baconz.tech</h1>
+      <h2>Business Innovation in Progress</h2>
+      <div class="icon">💼</div>
+    </div>
+
+    <section id="message">
+      <h2>Site Status</h2>
+      <div class="message">
+        <p>
+          Thank you for visiting Baconz.tech.<br>
+          Our team is building out new solutions and services.<br>
+          This landing page is provisional. Please check back soon for updates!
+        </p>
+      </div>
+    </section>
+
+
+    <section id="contact">
+      <h2>Contact & Subdomains</h2>
+      <div class="message">
+        <p>
+          For inquiries, email <a href="mailto:info@baconz.tech" style="color:#1e88e5;text-decoration:underline;">info@baconz.tech</a><br>
+          Explore our projects:<br>
+          <a href="https://placeholder.baconz.tech" style="color:#43a047;text-decoration:underline;">placeholder.baconz.tech</a>
+        </p>
+      </div>
+    </section>
+  </body>
 </html>
