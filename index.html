@@ -10,8 +10,11 @@
         background-color: #f4f6fb;
         color: #2d334a;
         margin: 0;
-        padding: 20px;
+        padding: 0;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
         transition: background-color 0.5s ease;
       }
 
@@ -38,9 +41,9 @@
 
       .container {
         max-width: 800px;
-        margin: 0 auto;
+        margin: 20px auto;
         background-color: #fff;
-        padding: 20px;
+        padding: 25px 20px;
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(34, 51, 68, 0.1);
         overflow: hidden;
@@ -64,15 +67,6 @@
         color: #1e88e5;
       }
 
-      .update {
-        background-color: #fff8e1;
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 20px;
-        animation: fadeIn 2s ease-in-out;
-        border-left: 4px solid #43a047;
-      }
-
       .icon {
         font-size: 5em;
         color: #1e88e5;
@@ -84,12 +78,32 @@
         background-color: #ffe082;
         color: #2d334a;
         font-weight: bold;
-        padding: 10px 0;
+        padding: 15px 10px;
         border-radius: 10px;
         margin-bottom: 20px;
         font-size: 1.1em;
         box-shadow: 0 2px 8px rgba(34, 51, 68, 0.07);
         animation: fadeIn 1s ease-in-out;
+      }
+
+      footer {
+        margin-top: auto;
+        padding: 20px 10px;
+        background-color: #fff;
+        box-shadow: 0 -2px 10px rgba(34, 51, 68, 0.05);
+        border-top: 1px solid #e0e0e0;
+        font-size: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        animation: fadeIn 2s ease-in-out forwards;
+      }
+
+      footer a {
+        color: #1e88e5;
+        text-decoration: underline;
       }
 
       @keyframes fadeIn {
@@ -101,6 +115,21 @@
         0% { transform: scale(1); }
         50% { transform: scale(1.1); }
         100% { transform: scale(1); }
+      }
+
+      /* Responsive styling */
+      @media (max-width: 600px) {
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.5em; }
+        p { font-size: 1em; }
+        .container { padding: 20px 15px; margin: 15px; }
+        .banner { font-size: 1em; padding: 12px; }
+        footer { font-size: 0.95em; padding: 15px 10px; }
+        .icon { font-size: 4em; }
+      }
+
+      @media (min-width: 1200px) {
+        .container { max-width: 1000px; padding: 30px 40px; }
       }
     </style>
   </head>
@@ -126,14 +155,13 @@
       </div>
     </section>
 
-
     <section id="contact">
       <h2>Contact & Subdomains</h2>
       <div class="message">
         <p>
-          For inquiries, email <a href="mailto:info@baconz.tech" style="color:#1e88e5;text-decoration:underline;">info@baconz.tech</a><br>
+          For inquiries, email <a href="mailto:info@baconz.tech">info@baconz.tech</a><br>
           Explore our projects:<br>
-          <a href="https://placeholder.baconz.tech" style="color:#43a047;text-decoration:underline;">placeholder.baconz.tech</a>
+          <a href="https://placeholder.baconz.tech">placeholder.baconz.tech</a>
         </p>
       </div>
     </section>
