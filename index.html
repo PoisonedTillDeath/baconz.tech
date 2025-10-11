@@ -3,171 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baconz.tech</title>
-    <style>
-      body {
-        font-family: 'Georgia', serif;
-        background-color: #f4f6fb;
-        color: #2d334a;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        transition: background-color 0.5s ease;
-      }
-
-      h1 {
-        color: #1e88e5;
-        font-size: 3em;
-        margin-bottom: 0.5em;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      h2 {
-        color: #43a047;
-        margin-top: 1.5em;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      p {
-        font-size: 1.2em;
-        line-height: 1.6em;
-        margin: 0 0 20px;
-        opacity: 0;
-        animation: fadeIn 2s ease-in-out forwards;
-      }
-
-      .container {
-        max-width: 800px;
-        margin: 20px auto;
-        background-color: #fff;
-        padding: 25px 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(34, 51, 68, 0.1);
-        overflow: hidden;
-        transition: box-shadow 0.3s ease;
-      }
-
-      .container:hover {
-        box-shadow: 0 8px 24px rgba(34, 51, 68, 0.15);
-      }
-
-      .message {
-        background-color: #e3f2fd;
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        animation: fadeIn 2s ease-in-out;
-      }
-
-      .message p {
-        font-style: italic;
-        color: #1e88e5;
-      }
-
-      .icon {
-        font-size: 5em;
-        color: #1e88e5;
-        animation: pulse 1.5s infinite;
-        margin-bottom: 0.5em;
-      }
-
-      .banner {
-        background-color: #ffe082;
-        color: #2d334a;
-        font-weight: bold;
-        padding: 15px 10px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        font-size: 1.1em;
-        box-shadow: 0 2px 8px rgba(34, 51, 68, 0.07);
-        animation: fadeIn 1s ease-in-out;
-      }
-
-      footer {
-        margin-top: auto;
-        padding: 20px 10px;
-        background-color: #fff;
-        box-shadow: 0 -2px 10px rgba(34, 51, 68, 0.05);
-        border-top: 1px solid #e0e0e0;
-        font-size: 1em;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        opacity: 0;
-        animation: fadeIn 2s ease-in-out forwards;
-      }
-
-      footer a {
-        color: #1e88e5;
-        text-decoration: underline;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
-      }
-
-      /* Responsive styling */
-      @media (max-width: 600px) {
-        h1 { font-size: 2.2em; }
-        h2 { font-size: 1.5em; }
-        p { font-size: 1em; }
-        .container { padding: 20px 15px; margin: 15px; }
-        .banner { font-size: 1em; padding: 12px; }
-        footer { font-size: 0.95em; padding: 15px 10px; }
-        .icon { font-size: 4em; }
-      }
-
-      @media (min-width: 1200px) {
-        .container { max-width: 1000px; padding: 30px 40px; }
-      }
-    </style>
+    <title>Baconz - Portfolio</title>
+    <link rel="stylesheet" href="./src/index.css">
   </head>
   <body>
-    <div class="container">
-      <div class="banner">
-        This is a provisional landing page.<br>
-        Baconz.tech is preparing something new and exciting for you!
+    <!-- Parallax Hero Section -->
+    <div class="parallax-header">
+      <div class="parallax-content">
+        <div class="icon">🥓</div>
+        <h1>Baconz</h1>
+        <h2>Developer | Innovator | Creator</h2>
+        <div class="banner">
+          Crafting digital experiences with passion and precision
+        </div>
       </div>
-      <h1>Baconz.tech</h1>
-      <h2>Business Innovation in Progress</h2>
-      <div class="icon">💼</div>
     </div>
-
-    <section id="message">
-      <h2>Site Status</h2>
-      <div class="message">
-        <p>
-          Thank you for visiting Baconz.tech.<br>
-          Our team is building out new solutions and services.<br>
-          This landing page is provisional. Please check back soon for updates!
-        </p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact & Subdomains</h2>
-      <div class="message">
-        <p>
-          For inquiries, email <a href="mailto:info@baconz.tech">info@baconz.tech</a><br>
-          Explore our projects:<br>
-          <a href="https://baconz.tech/dashboard.html">https://baconz.tech/dashboard.html</a>
-            <a href="https://baconz.tech/about.html">https://baconz.tech/about.html</a>
-          <a href="https://baconz.tech/ai.html">https://baconz.tech/ai.html</a>
-          <a href="https://baconz.tech/journal.html">https://baconz.tech/journal.html</a>
-
-        </p>
-      </div>
-    </section>
-  </body>
 </html>
