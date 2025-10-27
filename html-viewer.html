@@ -3,57 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HTML Viewer (about:blank)</title>
+  <title>Mini VS Code HTML Viewer</title>
   <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: #121212;
-      color: #eee;
+    html, body {
+      margin: 0;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 20px;
-    }
-    textarea {
-      width: 90%;
-      height: 60vh;
       background: #1e1e1e;
-      color: #00ffcc;
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 10px;
-      font-family: monospace;
-      font-size: 14px;
+      color: white;
+      font-family: system-ui, sans-serif;
     }
+
+    #editor {
+      flex: 1;
+      height: 80%;
+    }
+
+    #toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: #2d2d2d;
+      border-bottom: 1px solid #333;
+    }
+
     button {
-      padding: 10px 20px;
+      background: #0e639c;
+      color: white;
       border: none;
-      border-radius: 6px;
-      background: #00ffcc;
-      color: #000;
-      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
     }
     button:hover {
-      background: #00d4aa;
+      background: #1177bb;
     }
   </style>
+  <!-- Load Monaco from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
 </head>
 <body>
-  <h1>HTML Viewer (opens in about:blank)</h1>
-  <textarea id="code" placeholder="Type or paste your HTML here..."></textarea>
-  <button onclick="openViewer()">View in about:blank</button>
+  <div id="toolbar">
+    <button id="runBtn">▶️ View in about:blank</button>
+  </div>
+
+  <div id="editor"></div>
 
   <script>
-    function openViewer() {
-      const code = document.getElementById('code').value;
-      const win = window.open('about:blank', '_blank');
-      win.document.open();
-      win.document.write(code);
-      win.document.close();
-    }
+    require.config({ paths: { vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs" } });
+    require(["vs/editor/editor.main"], function () {
+      window.editor = monaco.editor.create(document.getElementById("editor"), {
+        value: "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Hello</title>\n  </head>\n  <body>\n    <h1>Hello, world!</h1>\n  </body>\n</html>",
+        language: "html",
+        theme: "vs-dark",
+        fontSize: 14,
+        minimap: { enabled: true },
+        automaticLayout: true,
+      });
+
+      document.getElementById("runBtn").addEventListener("click", () => {
+        const code = editor.getValue();
+        const win = window.open("about:blank", "_blank");
+        win.document.open();
+        win.document.write(code);
+        win.document.close();
+      });
+    });
   </script>
 </body>
 </html>
