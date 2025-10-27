@@ -40,7 +40,7 @@ body {
   position: relative;
   height: 100vh;
   min-height: 600px;
-  background-image: url('https://art.ngfiles.com/images/3380000/3380399_jeminix2_nightcall.gif?f1691279809');
+  background-image: url('././public/3380399_jeminix2_nightcall.gif');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
