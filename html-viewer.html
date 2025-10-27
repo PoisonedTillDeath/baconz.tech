@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML Viewer (about:blank)</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #121212;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px;
+    }
+    textarea {
+      width: 90%;
+      height: 60vh;
+      background: #1e1e1e;
+      color: #00ffcc;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #00d4aa;
+    }
+  </style>
+</head>
+<body>
+  <h1>HTML Viewer (opens in about:blank)</h1>
+  <textarea id="code" placeholder="Type or paste your HTML here..."></textarea>
+  <button onclick="openViewer()">View in about:blank</button>
+
+  <script>
+    function openViewer() {
+      const code = document.getElementById('code').value;
+      const win = window.open('about:blank', '_blank');
+      win.document.open();
+      win.document.write(code);
+      win.document.close();
+    }
+  </script>
+</body>
+</html>
