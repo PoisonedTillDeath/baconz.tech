@@ -21,15 +21,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Topbar (glassmorphism) */
 .topbar {
   position: fixed;
   top: 12px;
   left: 12px;
   right: 12px;
-  z-index: 1000;
+  z-index: 9999; /* very high so it sits above the hero and overlays the image */
   pointer-events: auto;
   display: block;
+  will-change: transform, opacity;
 }
 
 .topbar-inner {
@@ -43,11 +43,11 @@
   box-sizing: border-box;
 
   /* glass effect */
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.25);
+  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.18);
   border-radius: 12px;
 }
 
@@ -73,12 +73,13 @@
 }
 
 .topbar .nav-list li a {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 8px;
   transition: background 160ms, color 160ms, transform 160ms;
   font-size: 15px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .topbar .nav-list li a:hover {
@@ -88,9 +89,9 @@
 
 .topbar .nav-list li a.active,
 .topbar .nav-list li a[aria-current="page"] {
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
   color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18) inset;
 }
 
 /* Toggle for small screens */
@@ -103,15 +104,14 @@
   cursor: pointer;
 }
 
-/* Push page content down so it isn't hidden by the fixed topbar */
+/* Important: keep body content under the fixed topbar visually (no automatic push) */
+/* Removing the large top padding allows the topbar to overlap the hero image */
 body {
-  padding-top: 84px; /* slightly larger than topbar height to provide breathing room */
   font-family: 'Georgia', serif;
   background-color: var(--bg);
   color: var(--text);
   margin: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0; /* no top padding -> topbar overlaps the page/hero */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -157,10 +157,11 @@ body {
     display: flex;
   }
 
-  body {
-    padding-top: 120px; /* give more room for expanded mobile nav */
-  }
+  /* on mobile you still might want some breathing room when the nav opens;
+     we keep no permanent top padding so the topbar overlaps the hero */
 }
+
+/* ---- original styles continues below ---- */
 
 a {
   font-weight: 500;
@@ -187,6 +188,7 @@ a:hover {
   overflow: hidden;
 }
 
+/* keep the overlay gradient behind the topbar by using a lower z-index here */
 .parallax-header::before {
   content: '';
   position: absolute;
