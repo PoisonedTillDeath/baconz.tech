@@ -37,44 +37,7 @@
     banner: qs('.parallax-content .banner')
   };
 
-  (function () {
-    const qs = (s) => document.querySelector(s);
-
-    const contactToggle = qs('#contactToggle');
-    const contactPanel = qs('#contactPanel');
-    const closeContact = qs('#closeContact');
-    const contactForm = qs('#contactForm');
-    const formStatus = qs('#formStatus');
-    const baconIcon = qs('.parallax-content .icon');
-    const livePreview = qs('#liveHtmlPreview');
-
-    const STORAGE_KEY = 'baconz_contacts_v1';
-
-    function readContacts() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? JSON.parse(raw) : [];
-      } catch (e) {
-        console.error('Failed to read contacts', e);
-        return [];
-      }
-    }
-
-    function writeContacts(list) {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-      } catch (e) {
-        console.error('Failed to write contacts', e);
-      }
-    }
-
-    const headerEls = {
-      h1: qs('.parallax-content h1'),
-      h2: qs('.parallax-content h2'),
-      banner: qs('.parallax-content .banner')
-    };
-
-    const originals = {
+  const originals = {
       h1: headerEls.h1 ? headerEls.h1.textContent : '',
       h2: headerEls.h2 ? headerEls.h2.textContent : '',
       banner: headerEls.banner ? headerEls.banner.textContent : ''
