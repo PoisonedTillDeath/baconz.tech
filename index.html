@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baconz - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   </head>
   <body>
-    <!-- Parallax Hero Section -->
     <div class="parallax-header">
       <div class="parallax-content">
         <div class="icon">🥓</div>
@@ -17,85 +15,10 @@
         <div class="banner">
           Crafting digital experiences with passion and precision
         </div>
+        <pre id="liveHtmlPreview" class="live-preview hidden" aria-hidden="true"></pre>
+        <div class="controls" style="margin-top:18px; display:flex; gap:12px; justify-content:center;">
+        </div>
       </div>
     </div>
-
-    <!-- About Me (glassmorphism) -->
-    <section class="about-section" data-aos="fade-up">
-      <div class="container glass-card">
-        <div class="about-inner">
-          <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&crop=faces" alt="Avatar" />
-          <div class="about-text">
-            <h2>About Me</h2>
-            <p>Hey — I&apos;m Baconz. I build delightful apps, poke at new ideas, and eat excellent breakfast. I love clean code, good coffee, and making things people enjoy. I ship fast and iterate with curiosity.</p>
-            <p class="small">Developer • Maker • Late-night playlist curator</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured Projects -->
-    <section class="projects-section" data-aos="fade-up">
-      <div class="container">
-        <h2>Featured Projects</h2>
-        <div class="dashboard-grid">
-          <div class="dashboard-card" role="article">
-            <div class="card-icon">🚀</div>
-            <h3>Launchboard</h3>
-            <p>Product launch toolkit — analytics, optimizations, and deploy scripts that just work.</p>
-          </div>
-
-          <div class="dashboard-card" role="article">
-            <div class="card-icon">🎨</div>
-            <h3>PixelPark</h3>
-            <p>A tiny playground for UI experiments and delightful micro-interactions.</p>
-          </div>
-
-          <div class="dashboard-card" role="article">
-            <div class="card-icon">⚙️</div>
-            <h3>Toolsmith</h3>
-            <p>Developer utilities and CLI helpers that shave minutes off your day.</p>
-          </div>
-
-          <div class="dashboard-card" role="article">
-            <div class="card-icon">🎧</div>
-            <h3>Ambient Mix</h3>
-            <p>An always-on playlist and small experiments in generative background audio.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Music / Aesthetic GIF -->
-    <section class="media-section" data-aos="fade-up">
-      <div class="container media-inner">
-        <div class="media-left">
-          <h3>Currently listening</h3>
-          <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4sWSpwq3LiO" width="100%" height="160" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        </div>
-        <div class="media-right">
-          <h3>Aesthetic</h3>
-          <img class="aesthetic-gif" src="https://media.giphy.com/media/3o6ZsY2YwzF4vQ6vSG/giphy.gif" alt="Ambient looping gif" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Quote / Banner Rotator -->
-    <section class="quotes-section" data-aos="fade-up">
-      <div class="container">
-        <div id="quote-rotator" class="quote-rotator" aria-live="polite">
-          <div class="quote">"Make it simple, but significant."</div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>© <strong>Baconz</strong> — Built with curiosity.</div>
-      <div><a href="#">Contact</a> • <a href="#">Resume</a></div>
-    </footer>
-
-    <!-- AOS and site scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="public/scripts.js"></script>
   </body>
-  </html>
