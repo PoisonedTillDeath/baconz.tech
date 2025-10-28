@@ -21,6 +21,147 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Topbar (glassmorphism) */
+.topbar {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 1000;
+  pointer-events: auto;
+  display: block;
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 1100px;
+  box-sizing: border-box;
+
+  /* glass effect */
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.25);
+  border-radius: 12px;
+}
+
+/* Brand */
+.topbar .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Nav list */
+.topbar .nav-list {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.topbar .nav-list li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 160ms, color 160ms, transform 160ms;
+  font-size: 15px;
+}
+
+.topbar .nav-list li a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+.topbar .nav-list li a.active,
+.topbar .nav-list li a[aria-current="page"] {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) inset;
+}
+
+/* Toggle for small screens */
+.topbar-toggle {
+  display: none;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Push page content down so it isn't hidden by the fixed topbar */
+body {
+  padding-top: 84px; /* slightly larger than topbar height to provide breathing room */
+  font-family: 'Georgia', serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+}
+
+/* Small screens: collapse nav into toggle */
+@media (max-width: 720px) {
+  .topbar {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+  }
+
+  .topbar-inner {
+    padding: 8px 14px;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .topbar-toggle {
+    display: inline-block;
+  }
+
+  .topbar .nav-list {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(64px + 12px);
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    display: none;
+  }
+
+  .topbar .nav-list.open {
+    display: flex;
+  }
+
+  body {
+    padding-top: 120px; /* give more room for expanded mobile nav */
+  }
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -30,20 +171,7 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  font-family: 'Georgia', serif;
-  background-color: var(--bg);
-  color: var(--text);
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-  transition: background-color 0.5s ease;
-}
-
+/* Note: parallax header expects the background gif to be present at the referenced path */
 .parallax-header {
   position: relative;
   height: 100vh;
