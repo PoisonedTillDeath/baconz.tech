@@ -1,71 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Baconz Projects</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <button class="topbar-toggle" aria-label="Toggle navigation">☰</button>
-      <ul class="nav-list">
-        <li><a href="https://baconz.tech/html-viewer.html" target="_blank">HTML Viewer</a></li>
-        <li><a href="https://baconz.tech/dev-terminal.html" target="_blank">Dev Terminal</a></li>
-        <li><a href="https://baconz.tech/web-proxy.html" target="_blank">Web Proxy</a></li>
-        <li><a href="https://baconz.tech/bank-app.html" target="_blank">Bank App</a></li>
-        <li><a href="https://baconz.tech/roblox.html" target="_blank">Roblox Projects</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <section class="parallax-header">
-    <div class="parallax-content">
-      <div class="icon">💻</div>
-      <h1>Baconz</h1>
-      <h2>Building cool stuff that actually works.</h2>
-      <div class="banner">Scroll to see my projects ↓</div>
-    </div>
-  </section>
-
-  <section class="projects-section">
-    <div class="dots-bg"></div>
-    <div class="projects-content">
-      <h1>Projects</h1>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3>HTML Viewer</h3>
-          <p>Live HTML editor and previewer — quick, simple, and sleek.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baconz - Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="topbar" role="navigation" aria-label="Main navigation">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html" aria-label="Baconz home">🥓 Baconz</a>
+        <ul class="nav-list" role="menubar" aria-hidden="false">
+          <li role="none"><a role="menuitem" href="index.html">Home</a></li>
+          <li role="none"><a role="menuitem" href="html-viewer.html">HTML Viewer</a></li>
+          <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
+          <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        </ul>
+        <button class="topbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
+          ☰
+        </button>
+      </div>
+    </nav>
+    <div class="parallax-header">
+      <div class="parallax-content">
+        <div class="icon">🥓</div>
+        <h1>Baconz</h1>
+        <h2>Developer | Innovator | Creator</h2>
+        <div class="banner">
+          Crafting digital experiences with passion and precision
         </div>
-        <div class="project-card">
-          <h3>Web Proxy</h3>
-          <p>Privacy-focused browser with tab support and iframe navigation.</p>
-        </div>
-        <div class="project-card">
-          <h3>Dev Terminal</h3>
-          <p>Personal home-hosted dev terminal with CLI access and tools.</p>
-        </div>
-        <div class="project-card">
-          <h3>Bank App</h3>
-          <p>Finance simulation — fake cards, wallets, and stock trading UI.</p>
+        <pre id="liveHtmlPreview" class="live-preview hidden" aria-hidden="true"></pre>
+        <div class="controls" style="margin-top:18px; display:flex; gap:12px; justify-content:center;">
         </div>
       </div>
     </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Baconz. Built with ❤️ and caffeine.</p>
-  </footer>
-
-  <script>
-    const toggle = document.querySelector('.topbar-toggle');
-    const nav = document.querySelector('.nav-list');
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
-    document.querySelectorAll('.nav-list a').forEach(link => {
-      if (link.href === window.location.href) link.classList.add('active');
-    });
-  </script>
-</body>
+    <script src="public/scripts.js"></script>
+    <script>
+      (function () {
+        const links = document.querySelectorAll('.topbar .nav-list a');
+        const current = location.pathname.split('/').pop() || 'index.html';
+        links.forEach((a) => {
+          const href = a.getAttribute('href');
+          if (href === current || (href === 'index.html' && current === '')) {
+            a.classList.add('active');
+            a.setAttribute('aria-current', 'page');
+          }
+        });
+        const toggle = document.querySelector('.topbar-toggle');
+        const navList = document.querySelector('.topbar .nav-list');
+        toggle.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+          navList.classList.toggle('open');
+        });
+      })();
+    </script>
+  </body>
 </html>
