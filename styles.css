@@ -21,26 +21,152 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* -------------------- TOPBAR -------------------- */
 .topbar {
   position: fixed;
   top: 12px;
   left: 12px;
   right: 12px;
-  z-index: 9999; /* very high so it sits above the hero and overlays the image */
+  z-index: 9999;
   pointer-events: auto;
-  display: block;
-  will-change: transform, opacity;
 }
 
 .topbar-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* center links */
   height: 64px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 6px 18px rgba(10, 10, 10, 0.18);
+  border-radius: 12px;
   padding: 0 20px;
-  margin: 0 auto;
-  max-width: 1100px;
-  box-sizing: border-box;
+}
+
+.topbar .nav-list {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.topbar .nav-list li a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 160ms, transform 160ms;
+  font-size: 15px;
+}
+
+.topbar .nav-list li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.topbar-toggle {
+  display: none;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+}
+
+/* Mobile nav */
+@media (max-width: 720px) {
+  .topbar-inner {
+    justify-content: space-between;
+  }
+  .topbar-toggle {
+    display: inline-block;
+  }
+  .topbar .nav-list {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    top: calc(64px + 12px);
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    display: none;
+  }
+  .topbar .nav-list.open {
+    display: flex;
+  }
+}
+
+/* -------------------- PROJECTS SECTION -------------------- */
+.projects-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #0d1117;
+  color: #e6edf3;
+}
+
+.dots-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(#ffffff10 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: moveDots 12s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveDots {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-30px, -30px); }
+}
+
+.projects-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px;
+  max-width: 900px;
+}
+
+.projects-content h1 {
+  font-size: 3em;
+  margin-bottom: 0.3em;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 25px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
 
   /* glass effect */
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
