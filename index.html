@@ -1,57 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baconz - Projects</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <nav class="topbar" role="navigation" aria-label="Main navigation">
-      <div class="topbar-inner">
-        <ul class="nav-list" role="menubar">
-          <li role="none"><a role="menuitem" href="https://baconz.tech/">Home</a></li>
-          <li role="none"><a role="menuitem" href="https://baconz.tech/html-viewer.html">HTML Viewer</a></li>
-          <li role="none"><a role="menuitem" href="https://baconz.tech/projects.html">Projects</a></li>
-          <li role="none"><a role="menuitem" href="https://baconz.tech/about.html">About</a></li>
-        </ul>
-        <button class="topbar-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baconz Projects</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 🔝 Centered Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="topbar-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-list">
+        <li><a href="https://baconz.tech/html-viewer.html" target="_blank">HTML Viewer</a></li>
+        <li><a href="https://baconz.tech/dev-terminal.html" target="_blank">Dev Terminal</a></li>
+        <li><a href="https://baconz.tech/web-proxy.html" target="_blank">Web Proxy</a></li>
+        <li><a href="https://baconz.tech/bank-app.html" target="_blank">Bank App</a></li>
+        <li><a href="https://baconz.tech/roblox.html" target="_blank">Roblox Projects</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <div class="projects-section">
-      <div class="dots-bg"></div>
-      <div class="projects-content">
-        <h1>🚀 Projects</h1>
-        <p>Here are some of my latest builds and experiments.</p>
-        <div class="projects-grid">
-          <div class="project-card">
-            <h3>HTML Viewer</h3>
-            <p>A real-time HTML preview tool built for testing and quick edits.</p>
-          </div>
-          <div class="project-card">
-            <h3>Grow My Plant</h3>
-            <p>A Roblox game focused on creativity and progression mechanics.</p>
-          </div>
-          <div class="project-card">
-            <h3>Fintech Bank App</h3>
-            <p>A mockup of a luxury virtual bank app inspired by Amex Black Card UI.</p>
-          </div>
+  <!-- 🌌 Parallax Hero -->
+  <section class="parallax-header">
+    <div class="parallax-content">
+      <div class="icon">💻</div>
+      <h1>Baconz</h1>
+      <h2>Building cool stuff that actually works.</h2>
+      <div class="banner">Scroll to see my projects ↓</div>
+    </div>
+  </section>
+
+  <!-- 💠 Projects Section -->
+  <section class="projects-section">
+    <div class="dots-bg"></div>
+    <div class="projects-content">
+      <h1>Projects</h1>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>HTML Viewer</h3>
+          <p>Live HTML editor and previewer — quick, simple, and sleek.</p>
+        </div>
+        <div class="project-card">
+          <h3>Web Proxy</h3>
+          <p>Privacy-focused browser with tab support and iframe navigation.</p>
+        </div>
+        <div class="project-card">
+          <h3>Dev Terminal</h3>
+          <p>Personal home-hosted dev terminal with CLI access and tools.</p>
+        </div>
+        <div class="project-card">
+          <h3>Bank App</h3>
+          <p>Finance simulation — fake cards, wallets, and stock trading UI.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <script>
-      (function () {
-        const links = document.querySelectorAll('.topbar .nav-list a');
-        const toggle = document.querySelector('.topbar-toggle');
-        const navList = document.querySelector('.topbar .nav-list');
-        toggle.addEventListener('click', function () {
-          const expanded = this.getAttribute('aria-expanded') === 'true';
-          this.setAttribute('aria-expanded', String(!expanded));
-          navList.classList.toggle('open');
-        });
-      })();
-    </script>
-  </body>
+  <footer>
+    <p>© 2025 Baconz. Built with ❤️ and caffeine.</p>
+  </footer>
+
+  <script>
+    // Toggle nav for mobile
+    const toggle = document.querySelector('.topbar-toggle');
+    const nav = document.querySelector('.nav-list');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+
+    // Highlight current link (optional if you host multiple pages)
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      if (link.href === window.location.href) link.classList.add('active');
+    });
+  </script>
+</body>
 </html>
