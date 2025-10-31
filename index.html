@@ -3,49 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baconz - Portfolio</title>
+    <title>Baconz - Projects</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <nav class="topbar" role="navigation" aria-label="Main navigation">
       <div class="topbar-inner">
-        <a class="brand" href="index.html" aria-label="Baconz home">🥓 Baconz</a>
-        <ul class="nav-list" role="menubar" aria-hidden="false">
-          <li role="none"><a role="menuitem" href="index.html">Home</a></li>
-          <li role="none"><a role="menuitem" href="html-viewer.html">HTML Viewer</a></li>
-          <li role="none"><a role="menuitem" href="projects.html">Projects</a></li>
-          <li role="none"><a role="menuitem" href="about.html">About</a></li>
+        <ul class="nav-list" role="menubar">
+          <li role="none"><a role="menuitem" href="https://baconz.tech/">Home</a></li>
+          <li role="none"><a role="menuitem" href="https://baconz.tech/html-viewer.html">HTML Viewer</a></li>
+          <li role="none"><a role="menuitem" href="https://baconz.tech/projects.html">Projects</a></li>
+          <li role="none"><a role="menuitem" href="https://baconz.tech/about.html">About</a></li>
         </ul>
-        <button class="topbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
-          ☰
-        </button>
+        <button class="topbar-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
       </div>
     </nav>
-    <div class="parallax-header">
-      <div class="parallax-content">
-        <div class="icon">🥓</div>
-        <h1>Baconz</h1>
-        <h2>Developer | Innovator | Creator</h2>
-        <div class="banner">
-          Crafting digital experiences with passion and precision
-        </div>
-        <pre id="liveHtmlPreview" class="live-preview hidden" aria-hidden="true"></pre>
-        <div class="controls" style="margin-top:18px; display:flex; gap:12px; justify-content:center;">
+
+    <div class="projects-section">
+      <div class="dots-bg"></div>
+      <div class="projects-content">
+        <h1>🚀 Projects</h1>
+        <p>Here are some of my latest builds and experiments.</p>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>HTML Viewer</h3>
+            <p>A real-time HTML preview tool built for testing and quick edits.</p>
+          </div>
+          <div class="project-card">
+            <h3>Grow My Plant</h3>
+            <p>A Roblox game focused on creativity and progression mechanics.</p>
+          </div>
+          <div class="project-card">
+            <h3>Fintech Bank App</h3>
+            <p>A mockup of a luxury virtual bank app inspired by Amex Black Card UI.</p>
+          </div>
         </div>
       </div>
     </div>
-    <script src="public/scripts.js"></script>
+
     <script>
       (function () {
         const links = document.querySelectorAll('.topbar .nav-list a');
-        const current = location.pathname.split('/').pop() || 'index.html';
-        links.forEach((a) => {
-          const href = a.getAttribute('href');
-          if (href === current || (href === 'index.html' && current === '')) {
-            a.classList.add('active');
-            a.setAttribute('aria-current', 'page');
-          }
-        });
         const toggle = document.querySelector('.topbar-toggle');
         const navList = document.querySelector('.topbar .nav-list');
         toggle.addEventListener('click', function () {
