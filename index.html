@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🔝 Centered Topbar -->
   <header class="topbar">
     <div class="topbar-inner">
       <button class="topbar-toggle" aria-label="Toggle navigation">☰</button>
@@ -21,7 +21,6 @@
     </div>
   </header>
 
-  <!-- 🌌 Parallax Hero -->
   <section class="parallax-header">
     <div class="parallax-content">
       <div class="icon">💻</div>
@@ -31,7 +30,6 @@
     </div>
   </section>
 
-  <!-- 💠 Projects Section -->
   <section class="projects-section">
     <div class="dots-bg"></div>
     <div class="projects-content">
@@ -62,14 +60,9 @@
   </footer>
 
   <script>
-    // Toggle nav for mobile
     const toggle = document.querySelector('.topbar-toggle');
     const nav = document.querySelector('.nav-list');
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-
-    // Highlight current link (optional if you host multiple pages)
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
     document.querySelectorAll('.nav-list a').forEach(link => {
       if (link.href === window.location.href) link.classList.add('active');
     });
