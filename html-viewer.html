@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini VS Code HTML5 Viewer</title>
+  <title>Mini VS Code Viewer</title>
   <style>
     html, body {
       margin: 0;
@@ -38,11 +38,11 @@
     #container {
       display: flex;
       flex: 1;
-      height: calc(100vh - 40px);
+      overflow: hidden;
     }
 
     #fileList {
-      width: 200px;
+      width: 220px;
       background: #252526;
       overflow-y: auto;
       border-right: 1px solid #333;
@@ -55,13 +55,17 @@
       cursor: pointer;
       border-radius: 4px;
     }
-    #fileList div:hover {
-      background: #333;
-    }
+    #fileList div:hover { background: #333; }
 
     #editor {
       flex: 1;
       height: 100%;
+    }
+
+    #preview {
+      flex: 1;
+      background: white;
+      border: none;
     }
 
     input[type=file] {
@@ -74,9 +78,7 @@
 <body>
   <div id="toolbar">
     <div>
-      <label for="folderInput">
-        <button>📁 Upload Folder</button>
-      </label>
+      <label for="folderInput"><button>📁 Upload Folder</button></label>
       <input type="file" id="folderInput" webkitdirectory multiple />
     </div>
     <button id="runBtn">▶️ Run index.html</button>
@@ -85,15 +87,16 @@
   <div id="container">
     <div id="fileList"></div>
     <div id="editor"></div>
+    <iframe id="preview"></iframe>
   </div>
 
   <script>
     let filesMap = {};
-    let currentFile = null;
+    let currentPath = null;
 
     require.config({ paths: { vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs" } });
     require(["vs/editor/editor.main"], function () {
-      window.editor = monaco.editor.create(document.getElementById("editor"), {
+      const editor = monaco.editor.create(document.getElementById("editor"), {
         value: "<!-- Upload a folder to begin -->",
         language: "html",
         theme: "vs-dark",
@@ -108,32 +111,47 @@
         document.getElementById("fileList").innerHTML = "";
 
         for (const file of fileList) {
-          filesMap[file.webkitRelativePath] = file;
+          filesMap[file.webkitRelativePath] = await file.text();
           const div = document.createElement("div");
           div.textContent = file.webkitRelativePath;
-          div.onclick = async () => {
-            const text = await file.text();
-            currentFile = file;
+          div.onclick = () => {
+            currentPath = file.webkitRelativePath;
             const ext = file.name.split(".").pop();
             const lang = ext === "css" ? "css" : ext === "js" ? "javascript" : "html";
             monaco.editor.setModelLanguage(editor.getModel(), lang);
-            editor.setValue(text);
+            editor.setValue(filesMap[currentPath]);
           };
           document.getElementById("fileList").appendChild(div);
         }
       });
 
-      document.getElementById("runBtn").addEventListener("click", async () => {
+      // Update file content when user types
+      editor.onDidChangeModelContent(() => {
+        if (currentPath) filesMap[currentPath] = editor.getValue();
+      });
+
+      document.getElementById("runBtn").addEventListener("click", () => {
         const indexFile = Object.keys(filesMap).find(f => f.endsWith("index.html"));
         if (!indexFile) {
-          alert("No index.html found in the uploaded folder!");
+          alert("No index.html found!");
           return;
         }
-        const htmlText = await filesMap[indexFile].text();
-        const win = window.open("about:blank", "_blank");
-        win.document.open();
-        win.document.write(htmlText);
-        win.document.close();
+
+        // Create a Blob URL environment for the folder
+        const blobURLs = {};
+        for (const [path, content] of Object.entries(filesMap)) {
+          blobURLs[path] = URL.createObjectURL(new Blob([content], { type: "text/html" }));
+        }
+
+        // Replace relative links with blob URLs
+        let html = filesMap[indexFile];
+        for (const path in blobURLs) {
+          const shortName = path.split("/").pop();
+          html = html.replaceAll(shortName, blobURLs[path]);
+        }
+
+        const iframe = document.getElementById("preview");
+        iframe.srcdoc = html;
       });
     });
   </script>
