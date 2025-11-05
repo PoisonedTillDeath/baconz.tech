@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini VS Code HTML Viewer</title>
+  <title>Mini VS Code HTML5 Viewer</title>
   <style>
     html, body {
       margin: 0;
@@ -13,11 +13,6 @@
       background: #1e1e1e;
       color: white;
       font-family: system-ui, sans-serif;
-    }
-
-    #editor {
-      flex: 1;
-      height: 80%;
     }
 
     #toolbar {
@@ -38,25 +33,68 @@
       font-weight: 600;
       cursor: pointer;
     }
-    button:hover {
-      background: #1177bb;
+    button:hover { background: #1177bb; }
+
+    #container {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 40px);
+    }
+
+    #fileList {
+      width: 200px;
+      background: #252526;
+      overflow-y: auto;
+      border-right: 1px solid #333;
+      padding: 6px;
+      font-size: 14px;
+    }
+
+    #fileList div {
+      padding: 4px 6px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    #fileList div:hover {
+      background: #333;
+    }
+
+    #editor {
+      flex: 1;
+      height: 100%;
+    }
+
+    input[type=file] {
+      display: none;
     }
   </style>
-  <!-- Load Monaco from CDN -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
 </head>
 <body>
   <div id="toolbar">
-    <button id="runBtn">▶️ View in about:blank</button>
+    <div>
+      <label for="folderInput">
+        <button>📁 Upload Folder</button>
+      </label>
+      <input type="file" id="folderInput" webkitdirectory multiple />
+    </div>
+    <button id="runBtn">▶️ Run index.html</button>
   </div>
 
-  <div id="editor"></div>
+  <div id="container">
+    <div id="fileList"></div>
+    <div id="editor"></div>
+  </div>
 
   <script>
+    let filesMap = {};
+    let currentFile = null;
+
     require.config({ paths: { vs: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs" } });
     require(["vs/editor/editor.main"], function () {
       window.editor = monaco.editor.create(document.getElementById("editor"), {
-        value: "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Hello</title>\n  </head>\n  <body>\n    <h1>Hello, world!</h1>\n  </body>\n</html>",
+        value: "<!-- Upload a folder to begin -->",
         language: "html",
         theme: "vs-dark",
         fontSize: 14,
@@ -64,11 +102,37 @@
         automaticLayout: true,
       });
 
-      document.getElementById("runBtn").addEventListener("click", () => {
-        const code = editor.getValue();
+      document.getElementById("folderInput").addEventListener("change", async (event) => {
+        const fileList = event.target.files;
+        filesMap = {};
+        document.getElementById("fileList").innerHTML = "";
+
+        for (const file of fileList) {
+          filesMap[file.webkitRelativePath] = file;
+          const div = document.createElement("div");
+          div.textContent = file.webkitRelativePath;
+          div.onclick = async () => {
+            const text = await file.text();
+            currentFile = file;
+            const ext = file.name.split(".").pop();
+            const lang = ext === "css" ? "css" : ext === "js" ? "javascript" : "html";
+            monaco.editor.setModelLanguage(editor.getModel(), lang);
+            editor.setValue(text);
+          };
+          document.getElementById("fileList").appendChild(div);
+        }
+      });
+
+      document.getElementById("runBtn").addEventListener("click", async () => {
+        const indexFile = Object.keys(filesMap).find(f => f.endsWith("index.html"));
+        if (!indexFile) {
+          alert("No index.html found in the uploaded folder!");
+          return;
+        }
+        const htmlText = await filesMap[indexFile].text();
         const win = window.open("about:blank", "_blank");
         win.document.open();
-        win.document.write(code);
+        win.document.write(htmlText);
         win.document.close();
       });
     });
