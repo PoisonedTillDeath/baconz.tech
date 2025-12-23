@@ -8,14 +8,14 @@
 
     <style>
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
+            0%, 100% { transform:  translateY(0px); }
             50% { transform: translateY(-20px); }
         }
 
         @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { background-position:  0% 50%; }
+            50% { background-position:  100% 50%; }
+            100% { background-position:  0% 50%; }
         }
 
         .animate-float {
@@ -23,7 +23,7 @@
         }
 
         /* WALLPAPER BACKGROUND */
-        .wallpaper-bg {
+        . wallpaper-bg {
             background:
                 url('https://raw.githubusercontent.com/PoisonedTillDeath/baconz.tech/main/public/3380399_jeminix2_nightcall.gif')
                 center/cover no-repeat fixed,
@@ -38,14 +38,14 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .text-shadow {
+        . text-shadow {
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .overlay::before {
             content: "";
             position: fixed;
-            top: 0;
+            top:  0;
             left: 0;
             width: 100%;
             height: 100%;
@@ -62,7 +62,7 @@
 
         .nav-visible {
             transform: translateY(0);
-            transition: transform 0.3s ease;
+            transition:  transform 0.3s ease;
         }
     </style>
 </head>
@@ -75,8 +75,9 @@
             <div class="flex justify-between items-center h-16">
                 <a href="#" class="text-2xl font-bold text-white hover:scale-110 transition-transform">🥓 Baconz</a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-white hover:text-gray-200 transition-colors">Home</a>
+                    <a href="#home" class="text-white hover: text-gray-200 transition-colors">Home</a>
                     <a href="#links" class="text-white hover:text-gray-200 transition-colors">Links</a>
+                    <a href="#donate" class="text-white hover: text-gray-200 transition-colors">Donate</a>
                     <a href="#about" class="text-white hover:text-gray-200 transition-colors">About</a>
                 </div>
                 <button class="md:hidden text-white text-2xl">☰</button>
@@ -89,8 +90,8 @@
         <div class="text-center max-w-4xl w-full">
             <div class="text-9xl mb-8 animate-float">🥓</div>
 
-            <h1 class="text-6xl md:text-8xl font-bold text-white mb-4 text-shadow">Baconz</h1>
-            <h2 class="text-2xl md:text-3xl text-white/90 mb-6 text-shadow">Developer | Innovator | Creator</h2>
+            <h1 class="text-6xl md: text-8xl font-bold text-white mb-4 text-shadow">Baconz</h1>
+            <h2 class="text-2xl md: text-3xl text-white/90 mb-6 text-shadow">Developer | Innovator | Creator</h2>
             <p class="text-xl text-white/80 mb-12 text-shadow">
                 Crafting digital experiences with passion and precision
             </p>
@@ -106,18 +107,18 @@
                 <div class="text-white/70">
                     Discord: <span class="text-white font-semibold">Baconz03</span>
                 </div>
-                <div class="text-green-300 font-semibold mt-2">✓ Joins Are On For Followers!</div>
+                <div class="text-green-300 font-semibold mt-2">✓ Joins Are On For Followers! </div>
             </div>
 
             <!-- Social Links -->
-            <div id="links" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+            <div id="links" class="grid grid-cols-1 md: grid-cols-3 gap-4 mb-12">
                 <a href="https://guns.lol/bacon03" target="_blank" class="glass rounded-xl p-6 hover:scale-105 transition-all hover:shadow-2xl">
                     <div class="text-5xl mb-3">🔫</div>
                     <div class="text-white font-semibold text-lg">guns.lol</div>
                     <div class="text-white/70 text-sm">bacon03</div>
                 </a>
 
-                <a href="https://www.tiktok.com/@poisonedtilldeath_" target="_blank" class="glass rounded-xl p-6 hover:scale-105 transition-all hover:shadow-2xl">
+                <a href="https://www.tiktok.com/@poisonedtilldeath_" target="_blank" class="glass rounded-xl p-6 hover:scale-105 transition-all hover: shadow-2xl">
                     <div class="text-5xl mb-3">🎵</div>
                     <div class="text-white font-semibold text-lg">TikTok</div>
                     <div class="text-white/70 text-sm">@poisonedtilldeath_</div>
@@ -129,6 +130,33 @@
                     <div class="text-white font-semibold text-lg">Roblox</div>
                     <div class="text-white/70 text-sm">PoisonedTillDeath</div>
                 </a>
+            </div>
+
+            <!-- Donation Section -->
+            <div id="donate" class="mb-12">
+                <h3 class="text-3xl font-bold text-white mb-6 text-shadow">💰 Support My Work</h3>
+                
+                <div class="grid grid-cols-1 md: grid-cols-2 gap-4 mb-6">
+                    <!-- Bitcoin -->
+                    <div class="glass rounded-xl p-6 hover:scale-105 transition-all hover:shadow-2xl">
+                        <div class="text-5xl mb-3">₿</div>
+                        <div class="text-white font-semibold text-lg mb-2">Bitcoin</div>
+                        <div class="text-white/70 text-xs break-all mb-3">bc1qnnc6y0zkhxnvk8fmzay4yf7fhxhdne5umqw52z</div>
+                        <button onclick="copyBTC()" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg text-sm transition-colors">
+                            📋 Copy Address
+                        </button>
+                    </div>
+
+                    <!-- PayPal -->
+                    <a href="https://paypal.me/PoisonedTillDeath? locale.x=en_IE" target="_blank" class="glass rounded-xl p-6 hover: scale-105 transition-all hover:shadow-2xl">
+                        <div class="text-5xl mb-3">💳</div>
+                        <div class="text-white font-semibold text-lg mb-2">PayPal</div>
+                        <div class="text-white/70 text-sm mb-3">Quick & Easy Donations</div>
+                        <div class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg text-sm transition-colors inline-block">
+                            Donate Now →
+                        </div>
+                    </a>
+                </div>
             </div>
 
             <!-- ASCII Art -->
@@ -146,6 +174,16 @@
     </div>
 
     <script>
+        // Copy Bitcoin address
+        function copyBTC() {
+            const address = "bc1qnnc6y0zkhxnvk8fmzay4yf7fhxhdne5umqw52z";
+            navigator.clipboard.writeText(address).then(() => {
+                alert("✓ Bitcoin address copied to clipboard!");
+            }).catch(() => {
+                alert("Failed to copy.  Address:  " + address);
+            });
+        }
+
         // Mobile nav toggle
         document.querySelector('nav button').addEventListener('click', function() {
             const menu = document.querySelector('nav .hidden');
@@ -154,7 +192,7 @@
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor. addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) target.scrollIntoView({ behavior: 'smooth' });
@@ -166,14 +204,14 @@
         const navbar = document.getElementById("navbar");
 
         window.addEventListener("scroll", () => {
-            const current = window.scrollY;
+            const current = window. scrollY;
 
             if (current > lastScroll && current > 150) {
                 navbar.classList.add("nav-hidden");
                 navbar.classList.remove("nav-visible");
             } else {
                 navbar.classList.add("nav-visible");
-                navbar.classList.remove("nav-hidden");
+                navbar. classList.remove("nav-hidden");
             }
 
             lastScroll = current;
